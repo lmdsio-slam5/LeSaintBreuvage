@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 13 Octobre 2015 à 10:43
+-- Généré le :  Mar 13 Octobre 2015 à 11:33
 -- Version du serveur :  5.6.20
 -- Version de PHP :  5.5.15
 
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `catégorie`
+-- Structure de la table `categorie`
 --
 
 CREATE TABLE IF NOT EXISTS `categorie` (
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `catégorie`
+-- Contenu de la table `categorie`
 --
 
 INSERT INTO `categorie` (`CAT_CodeCategorieBiere`, `CAT_LibelleCategorieBiere`) VALUES
@@ -53,15 +53,15 @@ INSERT INTO `categorie` (`CAT_CodeCategorieBiere`, `CAT_LibelleCategorieBiere`) 
 ('RGE', 'Rouge'),
 ('ROU', 'Rousse'),
 ('SAI', 'Saison'),
-('SAL', 'Sans Alcool');
-('VER', 'Verte');
+('SAL', 'Sans Alcool'),
+('VER', 'VERTE');
 
 --
 -- Index pour les tables exportées
 --
 
 --
--- Index pour la table `catégorie`
+-- Index pour la table `categorie`
 --
 ALTER TABLE `categorie`
  ADD PRIMARY KEY (`CAT_CodeCategorieBiere`);
@@ -69,3 +69,5 @@ ALTER TABLE `categorie`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+REVOKE ALL PRIVILEGES ON *.* FROM 'lesaintb_user'@'localhost'; GRANT ALL PRIVILEGES ON *.* TO 'lesaintb_user'@'localhost'WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
