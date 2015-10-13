@@ -54,6 +54,7 @@ INSERT INTO `categorie` (`CAT_CodeCategorieBiere`, `CAT_LibelleCategorieBiere`) 
 ('ROU', 'Rousse'),
 ('SAI', 'Saison'),
 ('SAL', 'Sans Alcool');
+('VER', 'Verte');
 
 --
 -- Index pour les tables exportées
