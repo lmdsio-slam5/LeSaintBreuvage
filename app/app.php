@@ -21,7 +21,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 //enregistre un nouveau service nommé dao.article sous la forme d'une instance partagée de la classe ArticleDAO. Une fois le service enregistré, l'appel $app['dao.article'] renverra cette instance.
 // Register services.
 
-$app['dao.article'] = $app->share(function ($app) {
+$app['dao.categorie'] = $app->share(function ($app) {
     return new LeSaintBreuvage\DAO\CategorieDAO($app['db']);
 
 });
