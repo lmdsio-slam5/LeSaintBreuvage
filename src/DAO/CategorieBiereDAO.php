@@ -1,8 +1,8 @@
 <?php
 namespace LeSaintBreuvage\DAO;
 use Doctrine\DBAL\Connection;
-use LeSaintBreuvage\Domain\Categorie;  //utilisation de la doctrine DAO au lieu de PDO
-class CategorieDAO
+use LeSaintBreuvage\Domain\CategorieBiere;  //utilisation de la doctrine DAO au lieu de PDO
+class CategorieBiereDAO
 {
     /**
      * Database connection
@@ -42,7 +42,7 @@ class CategorieDAO
      * @return \LeSaintBreuvage\Domain\Article
      */
     private function buildCategorie($row) {
-        $categorie = new Categorie();
+        $categorie = new CategorieBiere();
         $categorie->setCodeCat($row['CAT_CodeCategorieBiere']);
         $categorie->setLibelle($row['CAT_LibelleCategorieBiere']);
         return $categorie;

@@ -1,0 +1,14 @@
+{% extends "layout.html.twig" %} {% set categorieMenu = true %} {% block title %}Catégories{% endblock %} {% block content %}
+<h2 class="text-center">{{ block('title') }}</h2>
+<div class="table-responsive">
+    <table class="table table-hover table-condensed">
+        <thead>
+        </thead>
+        {% for categorie in categories %}
+        <tr>
+            <td>{{ categorie.libelle }}</td>
+</tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

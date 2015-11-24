@@ -4,7 +4,7 @@
 namespace LeSaintBreuvage\Domain;
 
 
-class Categorie 
+class CategorieBiere 
 
 {
 

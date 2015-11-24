@@ -13,15 +13,22 @@ ExceptionHandler::register();
 
 // Register service providers.
 
+// Register service providers.
+$app->register(new Silex\Provider\FormServiceProvider());
+$app->register(new Silex\Provider\TranslationServiceProvider());
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+$app->register(new Silex\Provider\SessionServiceProvider());
 
-//enregistre un nouveau service nommé dao.article sous la forme d'une instance partagée de la classe ArticleDAO. Une fois le service enregistré, l'appel $app['dao.article'] renverra cette instance.
+
+
+//enregistre un nouveau service nommé dao.categorie sous la forme d'une instance partagée de la classe CategorieDAO. Une fois le service enregistré, l'appel $app['dao.categorie'] renverra cette instance.
 // Register services.
 
 $app['dao.categorie'] = $app->share(function ($app) {
-    return new LeSaintBreuvage\DAO\CategorieDAO($app['db']);
+    return new LeSaintBreuvage\DAO\CategorieBiereDAO($app['db']);
 
 });
