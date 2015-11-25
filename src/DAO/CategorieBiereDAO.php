@@ -18,6 +18,9 @@ class CategorieBiereDAO
     public function __construct(Connection $db) {
         $this->db = $db;
     }
+    
+
+    
     /**
      * Return a list of all categories, sorted by date (most recent first).
      *
@@ -31,17 +34,37 @@ class CategorieBiereDAO
         $categories = array();
         foreach ($result as $row) {
             $categorieCode = $row['CAT_CodeCategorieBiere'];
-            $categories[$categorieCode] = $this->buildCategorie($row);
+            $categories[$categorieCode] = $this->buildDomainObject($row);
         }
         return $categories;
     }
+    
+    
     /**
-     * Creates an Categorie object based on a DB row.
+     * Renvoie une categorie à partir de son identifiant
      *
-     * @param array $row The DB row containing Categorie data.
-     * @return \LeSaintBreuvage\Domain\Article
+     * @param integer $codeCat le code de la catégorie
+     *
+     * @return \GSB\Domain\Categorie|Lève un exception si aucune catégorie ne correspond
      */
-    private function buildCategorie($row) {
+    public function find($codeCat) {
+        $sql = "select * from categorie where CAT_CodeCategorieBiere=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($codeCat));
+
+        if ($row)
+            return $this->buildDomainObject($row);
+        else
+            throw new \Exception("Aucune catégorie ne correspond au code " . $codeCat);
+    }
+
+    /**
+     * Crée un objet CategorieBiere à partir d'une ligne de résultat BD
+     *
+     * @param array $row La ligne de résultat BD
+     *
+     * @return \GSB\Domain\CategorieBiere
+     */
+    protected function buildDomainObject($row) {
         $categorie = new CategorieBiere();
         $categorie->setCodeCat($row['CAT_CodeCategorieBiere']);
         $categorie->setLibelle($row['CAT_LibelleCategorieBiere']);

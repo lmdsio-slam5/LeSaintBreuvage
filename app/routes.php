@@ -11,3 +11,9 @@ $app->get('/categorie/', function () use ($app) {
     $categories = $app['dao.categorie']->findAll();   
  return $app['twig']->render('categories.html.twig', array('categories' =>  $categories));
 })->bind('categories');
+
+// Liste de toutes les bières
+$app->get('/biere/', function() use ($app) {
+    $medicaments = $app['dao.biere']->findAll();
+    return $app['twig']->render('biere.html.twig', array('bieres' => $bieres));
+})->bind('bieres');
