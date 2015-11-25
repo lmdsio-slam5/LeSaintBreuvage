@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 CREATE TABLE `lesaintbreuvage`.`biere` ( `BIE_CodeBiere` VARCHAR(3) NOT NULL , `BIE_DesignationBiere` VARCHAR(20) NOT NULL , `BIE_DescriptionBiere` VARCHAR(1000) NOT NULL , `BIE_LienImageBiere` VARCHAR(100) NOT NULL , `CAT_CodeCategorieBiere` VARCHAR(3) NOT NULL ) ENGINE = InnoDB;
 
 CREATE TABLE `lesaintbreuvage`.`prix` ( `QUA_CodeQuantite` VARCHAR(3) NOT NULL , `QUA_LibelleQuantite` VARCHAR(50) NOT NULL ) ENGINE = InnoDB;
-CREATE TABLE `lesaintbreuvage`.`quantite` ( `QUA_CodeQuantite` VARCHAR(3) NOT NULL , `BIE_CodeBiere` VARCHAR(3) NOT NULL , `PRX_Prix` VARCHAR(4) NOT NULL ) ENGINE = InnoDB;
+CREATE TABLE `lesaintbreuvage`.`quantite` ( `QUA_CodeQuantite` VARCHAR(3) NOT NULL , `BIE_CodeBiere` VARCHAR(3) NOT NULL , `PRX_Prix` VARCHAR(7) NOT NULL ) ENGINE = InnoDB;
 
 ALTER TABLE `biere` ADD PRIMARY KEY(`BIE_CodeBiere`);
 ALTER TABLE `categorie` ADD PRIMARY KEY(`CAT_CodeCategorieBiere`);

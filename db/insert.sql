@@ -14,3 +14,9 @@ INSERT INTO `biere` (`BIE_CodeBiere`, `BIE_DesignationBiere`, `BIE_DescriptionBi
 ('RCR', 'Rince Cochon Rouge', 'La Rince cochon est une bière fruitée et désaltérante titrant 7.5?%. Au nez, on ressent tout de suite les arômes fruités. En bouche, on retrouve des saveurs douces et fruitées, des notes de framboise, de cerise, et de fraise. On peut également ressentir le houblon, l''orge, et le malt.?', 'RinceCochonRouge', 'ARO'),
 ('SA1', 'Samichalus Ambrée', 'Bière autrichienne appartenant aux bières les plus fortes du monde ! Fait office de digestif ! ', 'SamiAmbre', 'AMB');
 INSERT INTO `prix` (`QUA_CodeQuantite`, `BIE_CodeBiere`, `prix`) VALUES ('B25', 'MS1', '1,80'), ('B25', 'KF1', '2,00');
+INSERT INTO `prix` (`QUA_CodeQuantite`, `BIE_CodeBiere`, `prix`) VALUES ('B75', 'LE1', '7,60'), ('B33', 'PMB', '2,35');
+INSERT INTO `prix` (`QUA_CodeQuantite`, `BIE_CodeBiere`, `prix`) VALUES ('B33', 'RCR', '2,85'), ('B33', 'FL2', '2,45');
+INSERT INTO `prix` (`QUA_CodeQuantite`, `BIE_CodeBiere`, `prix`) VALUES ('B33', 'FL3', '2,50');
+INSERT INTO `prix` (`QUA_CodeQuantite`, `BIE_CodeBiere`, `prix`) VALUES ('B75', 'CI1', '6,00'), ('B33', 'CI1', '2,40');
+INSERT INTO `prix` (`QUA_CodeQuantite`, `BIE_CodeBiere`, `prix`) VALUES ('B33', 'PI1', '3,00'), ('B75', 'PI1', '7,50'), ('FUC', 'PI1', '39,00');
+INSERT INTO `prix` (`QUA_CodeQuantite`, `BIE_CodeBiere`, `prix`) VALUES ('B33', 'SA1', '5,10'), ('B33', 'OR1', '2,70');
