@@ -30,5 +30,10 @@ $app->register(new Silex\Provider\SessionServiceProvider());
 
 $app['dao.categorie'] = $app->share(function ($app) {
     return new LeSaintBreuvage\DAO\CategorieBiereDAO($app['db']);
-
+    
+});
+$app['dao.biere'] = $app->share(function ($app) {
+    $biereDAO = new LeSaintBreuvage\DAO\BiereDAO($app['db']);
+    $biereDAO->setCategorieDAO($app['dao.categorie']);
+    return $biereDAO;
 });

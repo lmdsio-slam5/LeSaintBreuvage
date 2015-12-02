@@ -7,6 +7,7 @@ $app->get('/', function () use ($app) {
     return $app['twig']->render('index.html.twig');
 })->bind('home');
 
+// recherche de bieres par catégorie
 $app->get('/categorie/', function () use ($app) {
     $categories = $app['dao.categorie']->findAll();   
  return $app['twig']->render('categories.html.twig', array('categories' =>  $categories));
@@ -14,6 +15,13 @@ $app->get('/categorie/', function () use ($app) {
 
 // Liste de toutes les bières
 $app->get('/biere/', function() use ($app) {
-    $medicaments = $app['dao.biere']->findAll();
-    return $app['twig']->render('biere.html.twig', array('bieres' => $bieres));
+    $bieres = $app['dao.biere']->findAll();
+    return $app['twig']->render('bieres.html.twig', array('bieres' => $bieres));
 })->bind('bieres');
+
+// Résultats de la recherche de bières
+$app->post('/biere/resultats/', function(Request $request) use ($app) {
+    $categorieCode = $request->request->get('categorie');
+    $bieres = $app['dao.biere']->findAllByCategorieBiere($categorieCode);
+    return $app['twig']->render('biere_resultats.html.twig', array('bieres' => $bieres));
+})->bind('biere_resultats');
