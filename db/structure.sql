@@ -11,3 +11,7 @@ ALTER TABLE `biere` ADD PRIMARY KEY(`BIE_CodeBiere`);
 ALTER TABLE `categorie` ADD PRIMARY KEY(`CAT_CodeCategorieBiere`);
 ALTER TABLE `prix` ADD PRIMARY KEY(`BIE_CodeBiere`);
 ALTER TABLE `quantite` ADD PRIMARY KEY(`QUA_CodeQuantite`);
+ALTER TABLE `biere` ADD `Degré` VARCHAR(4) NOT NULL AFTER `CAT_CodeCategorieBiere`;
+ALTER TABLE `biere` CHANGE `Degré` `BIE_Degre` DECIMAL(4,1) NOT NULL;
+ALTER TABLE `prix` CHANGE `prix` `prix` DECIMAL(7,2) NOT NULL;
+ALTER TABLE `prix` CHANGE `prix` `PRX_Prix` DECIMAL(7,2) NOT NULL;
