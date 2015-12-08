@@ -6,9 +6,9 @@ $app['db.options'] = array(
     'charset'  => 'utf8',
     'host'     => '127.0.0.1',
     'port'     => '3306',
-    'dbname'   => 'presidents',
-    'user'     => 'presidents_user',
-    'password' => 'secret',
+    'dbname'   => 'lesaintbreuvage',
+    'user'     => 'lesaintb_user',
+    'password' => 'biere',
 );
 
 // enable the debug mode
