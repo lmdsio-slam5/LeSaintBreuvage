@@ -2,23 +2,8 @@
 namespace LeSaintBreuvage\DAO;
 use Doctrine\DBAL\Connection;
 use LeSaintBreuvage\Domain\CategorieBiere;  //utilisation de la doctrine DAO au lieu de PDO
-class CategorieBiereDAO
+class CategorieBiereDAO extends DAO
 {
-    /**
-     * Database connection
-     *
-     * @var \Doctrine\DBAL\Connection
-     */
-    private $db;
-    /**
-     * Constructor
-     *
-     * @param \Doctrine\DBAL\Connection The database connection object
-     */
-    public function __construct(Connection $db) {
-        $this->db = $db;
-    }
-    
 
     
     /**

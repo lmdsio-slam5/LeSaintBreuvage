@@ -25,3 +25,11 @@ $app->post('/biere/resultats/', function(Request $request) use ($app) {
     $bieres = $app['dao.biere']->findAllByCategorieBiere($categorieCode);
     return $app['twig']->render('biere_resultats.html.twig', array('bieres' => $bieres));
 })->bind('biere_resultats');
+
+// Login form
+$app->get('/login', function(Request $request) use ($app) {
+    return $app['twig']->render('login.html.twig', array(
+        'error'         => $app['security.last_error']($request),
+        'last_username' => $app['session']->get('_security.last_username'),
+    ));
+})->bind('login');

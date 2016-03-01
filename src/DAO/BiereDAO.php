@@ -3,23 +3,9 @@ namespace LeSaintBreuvage\DAO;
 use Doctrine\DBAL\Connection;
 use LeSaintBreuvage\Domain\Biere; 
 
-class BiereDAO
+class BiereDAO extends DAO
 {
-    /**
-     * connection à la base
-     *
-     * @var \Doctrine\DBAL\Connection
-     */
-    private $db;
-    /**
-     * Constructor
-     *
-     * @param \Doctrine\DBAL\Connection The database connection object
-     */
-    public function __construct(Connection $db) {
-        $this->db = $db;
-    }
-    
+
         
       /**
      * @var \GSB\DAO\CategorieDAO
@@ -55,9 +41,9 @@ class BiereDAO
      *
      * @return array Liste des bières
      */
-    public function findAllByCategorieBiere($categorieCode) {
+    public function findAllByCategorieBiere($codeCat) {
         $sql = "select * from biere where CAT_CodeCategorieBiere=? order by BIE_DesignationBiere";
-        $result = $this->db->fetchAll($sql, array($categorieCode));
+        $result = $this->db->fetchAll($sql, array($codeCat));
         
         // Convertit les résultats de requête en tableau d'objets du domaine
         $bieres = array();
@@ -68,6 +54,15 @@ class BiereDAO
         return $bieres;
     }
     
+       public function find($codeBiere) {
+        $sql = "select * from biere where BIE_CodeBiere=?";
+        $row = $this->db->fetchAssoc($sql, array($codeBiere));
+
+        if ($row)
+            return $this->buildDomainObject($row);
+        else
+            throw new \Exception("Aucue bière ne correspond à l'identifiant " . $codeBiere);
+    }
     
     /**
      * Creates an biere object based on a DB row.
@@ -81,8 +76,13 @@ class BiereDAO
         $biere->setLibelle($row['BIE_DesignationBiere']);
         $biere->setDescription($row['BIE_DescriptionBiere']);
         $biere->setImage($row['BIE_LienImageBiere']);
-        $biere->setLibelle($row['BIE_DesignationBiere']);
-        $biere->setLibelle($row['BIE_DesignationBiere']);
+        
+            if (array_key_exists('CAT_CodeCategorieBiere', $row)) {
+            // Trouve et définit la catégorie associée
+            $codeCat = $row['CAT_CodeCategorieBiere'];
+            $categorie = $this->CategorieBiereDAO->find($codeCat);
+            $biere->setCategorie($categorie);
+        }
         
         return $biere;
     }
