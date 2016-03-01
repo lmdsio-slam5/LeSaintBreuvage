@@ -17,3 +17,15 @@ ALTER TABLE `biere` ADD `Degré` VARCHAR(4) NOT NULL AFTER `CAT_CodeCategorieBie
 ALTER TABLE `biere` CHANGE `Degré` `BIE_Degre` DECIMAL(4,1) NOT NULL;
 ALTER TABLE `prix` CHANGE `prix` `prix` DECIMAL(7,2) NOT NULL;
 ALTER TABLE `prix` CHANGE `prix` `PRX_Prix` DECIMAL(7,2) NOT NULL;
+CREATE TABLE `utilisateur` (
+  `UT_numUtil` int(5) NOT NULL,
+  `UT_nomUtil` varchar(10) NOT NULL,
+  `UT_prenomUtil` varchar(10) NOT NULL,
+  `UT_adresseUtil` varchar(50) NOT NULL,
+  `UT_codePostalUtil` varchar(5) NOT NULL,
+  `UT_villeUtil` varchar(50) NOT NULL,
+  `UT_courrielUtil` varchar(30) NOT NULL,
+  `UT_motDePasseUtil` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`UT_numUtil`);
