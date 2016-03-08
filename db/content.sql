@@ -83,4 +83,4 @@ INSERT INTO `quantite` (`QUA_CodeQuantite`, `QUA_LibelleQuantite`) VALUES
 ('F30', 'Fut de 30 Litres'),
 ('FUC', 'Fut de 50 Litres');
 
-
+insert into utilisateur values (1, 'saintBreuvage', 'David', '1 r Aimon de Chissée', '38100', 'GRENOBLE', 'saintBreuvage', 'biere','mnPEaJNz6,rUPbAYGg6$UXt', '','V');

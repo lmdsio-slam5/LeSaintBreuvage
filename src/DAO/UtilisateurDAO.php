@@ -6,7 +6,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use GSB\Domain\Utilisateur;
+use LeSaintBreuvage\Domain\Utilisateur;
 
 class UtilisateurDAO extends DAO implements UserProviderInterface
 {
@@ -18,10 +18,10 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      *
      * @param integer $id L'identifiant du utilisateur
      *
-     * @return \GSB\Domain\Utilisateur|Lève un exception si aucun utilisateur ne correspond
+     * @return \LeSaintBreuvage\Domain\Utilisateur|Lève un exception si aucun utilisateur ne correspond
      */
     public function find($id) {
-        $sql = "select * from utilisateur where id_utilisateur=?";
+        $sql = "select * from utilisateur where UT_numUtil=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
@@ -35,7 +35,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      */
     public function loadUserByUsername($username)
     {
-        $sql = "select * from utilisateur where login_utilisateur=?";
+        $sql = "select * from utilisateur where UT_identifiantUtil=?";
         $row = $this->getDb()->fetchAssoc($sql, array($username));
 
         if ($row)
@@ -61,25 +61,25 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      */
     public function supportsClass($class)
     {
-        return 'GSB\Domain\Utilisateur' === $class;
+        return 'LeSaintBreuvage\Domain\Utilisateur' === $class;
     }
 
     /**
      * Crée un utilisateur gràce à la ligne récupérée.
      *
      * @param array la ligne contient les informations du utilisateur.
-     * @return \GSB\Domain\Utilisateur
+     * @return \LeSaintBreuvage\Domain\Utilisateur
      */
     protected function buildDomainObject($row) {
         $utilisateur = new Utilisateur();
-        $utilisateur->setId($row['id_utilisateur']);
-        $utilisateur->setNom($row['nom_utilisateur']);
-        $utilisateur->setPrenom($row['prenom_utilisateur']);
-        $utilisateur->setAdresse($row['adresse_utilisateur']);
-        $utilisateur->setCp($row['cp_utilisateur']);
-        $utilisateur->setVille($row['ville_utilisateur']);
-        $utilisateur->setUsername($row['login_utilisateur']);
-        $utilisateur->setPassword($row['pwd_utilisateur']);
+        $utilisateur->setId($row['UT_numUtil']);
+        $utilisateur->setNom($row['UT_nomUtil']);
+        $utilisateur->setPrenom($row['UT_prenomUtil']);
+        $utilisateur->setAdresse($row['UT_adresseUtil']);
+        $utilisateur->setCp($row['UT_codePostalUtil']);
+        $utilisateur->setVille($row['UT_villeUtil']);
+        $utilisateur->setPassword($row['UT_identifiantUtil']);
+        $utilisateur->setUsername($row['UT_motDePasseUtil']);
         $utilisateur->setSalt($row['salt']);
         $utilisateur->setRole($row['role']);
         return $utilisateur;

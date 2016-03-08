@@ -22,22 +22,6 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider());
-$app->register(new Silex\Provider\SecurityServiceProvider(), array(
-    'security.firewalls' => array(
-        'login' => array(
-            'pattern' => '^/login$',
-            'anonymous' => true
-        ),
-        'secured' => array(
-            'pattern' => '^.*$',
-            'logout' => true,
-            'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
-            'users' => $app->share(function () use ($app) {
-                return new LeSaintBreuvage\DAO\UtilisateurDAO($app['db']);
-            }),
-        ),
-    ),
-));
 
 $app['dao.utilisateur'] = $app->share(function ($app) {
     $utilisateurDAO = new LeSaintBreuvage\DAO\UtilisateurDAO($app['db']);

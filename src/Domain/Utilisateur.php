@@ -1,6 +1,6 @@
 <?php
 
-namespace GSB\Domain;
+namespace LeSaintBreuvage\Domain;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 

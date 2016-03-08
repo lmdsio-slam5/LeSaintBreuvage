@@ -8,7 +8,7 @@ class BiereDAO extends DAO
 
         
       /**
-     * @var \GSB\DAO\CategorieDAO
+     * @var \LeSaintBreuvage\DAO\CategorieDAO
      */
     private $categorieDAO;
 

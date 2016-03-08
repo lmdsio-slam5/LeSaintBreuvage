@@ -30,7 +30,7 @@ class CategorieBiereDAO extends DAO
      *
      * @param integer $codeCat le code de la catégorie
      *
-     * @return \GSB\Domain\Categorie|Lève un exception si aucune catégorie ne correspond
+     * @return \LeSaintBreuvage\Domain\Categorie|Lève un exception si aucune catégorie ne correspond
      */
     public function find($codeCat) {
         $sql = "select * from categorie where CAT_CodeCategorieBiere=?";
@@ -47,7 +47,7 @@ class CategorieBiereDAO extends DAO
      *
      * @param array $row La ligne de résultat BD
      *
-     * @return \GSB\Domain\CategorieBiere
+     * @return \LeSaintBreuvage\Domain\CategorieBiere
      */
     protected function buildDomainObject($row) {
         $categorie = new CategorieBiere();
