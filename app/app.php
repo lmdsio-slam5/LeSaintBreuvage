@@ -47,5 +47,5 @@ $app['dao.biere'] = $app->share(function ($app) {
 });
     
 $app['dao.biere_ambree'] = $app->share(function ($app) {
-    return new LeSaintBreuvage\DAO\Article_femmeDAO($app['db']);
+    return new LeSaintBreuvage\DAO\BiereDAO($app['db']);
 });

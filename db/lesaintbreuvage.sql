@@ -150,6 +150,12 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 INSERT INTO `utilisateur` (`UT_numUtil`, `UT_nomUtil`, `UT_prenomUtil`, `UT_adresseUtil`, `UT_codePostalUtil`, `UT_villeUtil`, `UT_identifiantUtil`, `UT_motDePasseUtil`, `salt`, `role`) VALUES
 (1, '', '', '', '', '', 'saintbreuvage', 'biere', 'mnPEaJNz6,rUPbAYGg6$UXt', 'ROLE_ADMIN');
 
+
+
+CREATE TABLE `lesaintbreuvage`.`prix` ( `QUA_CodeQuantite` VARCHAR(3) NOT NULL , `QUA_LibelleQuantite` VARCHAR(50) NOT NULL ) ENGINE = InnoDB;
+
+CREATE TABLE `lesaintbreuvage`.`quantite` ( `QUA_CodeQuantite` VARCHAR(3) NOT NULL , `BIE_CodeBiere` VARCHAR(3) NOT NULL , `PRX_Prix` VARCHAR(7) NOT NULL ) ENGINE = InnoDB;
+
 --
 -- Indexes for dumped tables
 --

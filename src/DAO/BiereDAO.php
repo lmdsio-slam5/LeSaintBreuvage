@@ -23,7 +23,7 @@ class BiereDAO extends DAO
      */
     public function findAll() {
         $sql = "select * from biere order by BIE_DesignationBiere asc";
-        $result = $this->getDb->fetchAll($sql);
+        $result = $this->getDb()->fetchAll($sql);
         
         // Convert query result to an array of domain objects
         $bieres = array();
@@ -34,11 +34,23 @@ class BiereDAO extends DAO
         return $bieres;
     }
     
+        public function findAmbree() {
+        $sql = "select * from Article where CAT_CodeCategorieBiere = 'AMB' order by BIE_DesignationBiere";
+        $result = $this->getDb()->fetchAll($sql);
+        
+        // Convertit les résultats de requête en tableau d'objets du domaine
+        $bieres = array();
+        foreach ($result as $row) {
+            $biereDesi = $row['BIE_DesignationBiere'];
+            $bieres[$biereDesi] = $this->buildDomainObject($row);
+        }
+        return $bieres;
+    }
 
     
        public function find($codeBiere) {
         $sql = "select * from biere where BIE_CodeBiere=?";
-        $row = $this->getDb->fetchAssoc($sql, array($codeBiere));
+        $row = $this->getDb()->fetchAssoc($sql, array($codeBiere));
 
         if ($row)
             return $this->buildDomainObject($row);
@@ -62,7 +74,7 @@ class BiereDAO extends DAO
             if (array_key_exists('CAT_CodeCategorieBiere', $row)) {
             // Trouve et définit la catégorie associée
             $codeCat = $row['CAT_CodeCategorieBiere'];
-            $categorie = $this->CategorieBiereDAO->find($codeCat);
+            $categorie = $this->categorieDAO->find($codeCat);
             $biere->setCategorie($categorie);
         }
         
