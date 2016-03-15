@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpFoundation\Request;
 
+
 // Page d'accueil
 $app->get('/', function () use ($app) {
     return $app['twig']->render('index.html.twig');
@@ -18,13 +19,19 @@ $app->get('/biere/', function() use ($app) {
     $bieres = $app['dao.biere']->findAll();
     return $app['twig']->render('bieres.html.twig', array('bieres' => $bieres));
 })->bind('bieres');
+    
+// Liste de toutes les bières ambrées
+$app->get('/biere_ambree/', function() use ($app) {
+    $articles_femmes = $app['dao.biere_ambree']->findAll();
+    return $app['twig']->render('bieres_ambrees.html.twig', array('bieres_ambrees' => $bieres_ambrees));
+})->bind('bieres_ambrees');
+    
+// Détails sur une bière
+$app->get('/biere/{code}', function($code) use ($app) {
+    $biere = $app['dao.biere']->find($code);
+    return $app['twig']->render('bieres_details.html.twig', array('biere' => $biere));
+})->bind('biere');
 
-// Résultats de la recherche de bières
-$app->post('/biere/resultats/', function(Request $request) use ($app) {
-    $categorieCode = $request->request->get('categorie');
-    $bieres = $app['dao.biere']->findAllByCategorieBiere($categorieCode);
-    return $app['twig']->render('biere_resultats.html.twig', array('bieres' => $bieres));
-})->bind('biere_resultats');
 
 // Login form
 $app->get('/login', function(Request $request) use ($app) {

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2016 at 12:20 PM
+-- Generation Time: Mar 15, 2016 at 10:06 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -19,6 +19,36 @@ SET time_zone = "+00:00";
 --
 -- Database: `lesaintbreuvage`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `achat`
+--
+
+CREATE TABLE IF NOT EXISTS `achat` (
+  `AC_numAchat` int(4) NOT NULL,
+  `UT_numUtil` int(5) NOT NULL,
+  `achat_date` date NOT NULL,
+  `achat_total` float NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `achat`
+--
+
+INSERT INTO `achat` (`AC_numAchat`, `UT_numUtil`, `achat_date`, `achat_total`) VALUES
+(1, 1, '2015-04-12', 17.4),
+(2, 1, '2015-04-21', 22.3),
+(3, 2, '2015-05-11', 10.5),
+(4, 4, '2016-01-01', 25.09),
+(5, 2, '2016-01-16', 159),
+(6, 2, '2016-01-16', 159),
+(7, 2, '2016-01-16', 465),
+(8, 2, '2016-01-16', 465),
+(9, 2, '2016-01-16', 465),
+(10, 2, '2016-01-16', 465),
+(11, 2, '2016-01-16', 664);
 
 -- --------------------------------------------------------
 
@@ -86,6 +116,17 @@ INSERT INTO `categorie` (`CAT_CodeCategorieBiere`, `CAT_LibelleCategorieBiere`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `panier`
+--
+
+CREATE TABLE IF NOT EXISTS `panier` (
+  `BIE_codeBiere` varchar(3) NOT NULL,
+  `UT_numUtil` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `utilisateur`
 --
 
@@ -114,6 +155,13 @@ INSERT INTO `utilisateur` (`UT_numUtil`, `UT_nomUtil`, `UT_prenomUtil`, `UT_adre
 --
 
 --
+-- Indexes for table `achat`
+--
+ALTER TABLE `achat`
+  ADD PRIMARY KEY (`AC_numAchat`),
+  ADD KEY `FK_Achat_utilisateur_id` (`UT_numUtil`);
+
+--
 -- Indexes for table `biere`
 --
 ALTER TABLE `biere`
@@ -135,6 +183,11 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `achat`
+--
+ALTER TABLE `achat`
+  MODIFY `AC_numAchat` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `utilisateur`
 --

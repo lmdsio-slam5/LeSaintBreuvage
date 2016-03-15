@@ -20,6 +20,10 @@ $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
+$app['twig'] = $app->share($app->extend('twig', function(Twig_Environment $twig, $app) {
+    $twig->addExtension(new Twig_Extensions_Extension_Text());
+    return $twig;
+    }));
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider());
 
@@ -40,4 +44,8 @@ $app['dao.biere'] = $app->share(function ($app) {
     $biereDAO = new LeSaintBreuvage\DAO\BiereDAO($app['db']);
     $biereDAO->setCategorieDAO($app['dao.categorie']);
     return $biereDAO;
+});
+    
+$app['dao.biere_ambree'] = $app->share(function ($app) {
+    return new LeSaintBreuvage\DAO\Article_femmeDAO($app['db']);
 });
