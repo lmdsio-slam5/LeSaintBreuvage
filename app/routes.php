@@ -32,11 +32,37 @@ $app->get('/biere/{code}', function($code) use ($app) {
     return $app['twig']->render('bieres_details.html.twig', array('biere' => $biere));
 })->bind('biere');
 
-
-// Login form
+// Login
 $app->get('/login', function(Request $request) use ($app) {
     return $app['twig']->render('login.html.twig', array(
         'error'         => $app['security.last_error']($request),
         'last_username' => $app['session']->get('_security.last_username'),
-    ));
+        ));
 })->bind('login');
+
+// Profil utilisateur
+$app->match('/profil', function(Request $request) use ($app) {
+    $visiteur = $app['user'];
+    $visiteurFormView = null;
+    $visiteurForm = $app['form.factory']->create(new VisiteurType(), $visiteur);
+    $visiteurForm->handleRequest($request);
+    if ($visiteurForm->isSubmitted() && $visiteurForm->isValid()) {
+        $plainPassword = $visiteur->getPassword();
+        // find the encoder for a UserInterface instance
+        $encoder = $app['security.encoder_factory']->getEncoder($visiteur);
+        // compute the encoded password
+        $password = $encoder->encodePassword($plainPassword, $visiteur->getSalt());
+        $visiteur->setPassword($password); 
+        $app['dao.visiteur']->save($visiteur);
+        $app['session']->getFlashBag()->add('success', 'Vos informations personnelles ont été mises à jour.');
+    }
+    $visiteurFormView = $visiteurForm->createView();
+    return $app['twig']->render('visiteurs.html.twig', array('visiteurForm' => $visiteurFormView));
+})->bind('visiteur');
+//Mot de passe
+$app->get('/hashpwd', function() use ($app){
+    $rawPassword='admin';
+    $salt='%qugq3NAYfC1MKwrW?yevbE';
+    $encoder = $app['security.encoder.digest'];
+    return $encoder->encodePassword($rawPassword, $salt);
+});
