@@ -82,6 +82,8 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         $utilisateur->setUsername($row['UT_motDePasseUtil']);
         $utilisateur->setSalt($row['salt']);
         $utilisateur->setRole($row['role']);
+        
+        
         return $utilisateur;
     }
 }

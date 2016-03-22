@@ -23,24 +23,28 @@
                     <a class="navbar-brand" href="{{ path('home') }}">Le Saint Breuvage</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse-target">
-
                     <ul class="nav navbar-nav">
+
+
+                        <li><a href="{{ path('bieres')}}">Toutes les bières</a></li>
+
                         <li class="dropdown {% if categorieMenu is defined %}active{% endif %}">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">Catégories <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('bieres_ambrees') }}">Ambrée</a></li>
-                                <li><a href="{{ path('bieres') }}">Aromatisée</a></li>
-                                <li><a href="{{ path('bieres') }}">Artisanale</a></li>
-                                <li><a href="{{ path('bieres') }}">Blanche</a></li>
-                                <li><a href="{{ path('bieres') }}">Blonde</a></li>
-                                <li><a href="{{ path('bieres') }}">Brune</a></li>
-                                <li><a href="{{ path('bieres') }}">Cervoise</a></li>
+                                <li><a href="{{ path('bieres_aromatisees') }}">Aromatisée</a></li>
+                                <li><a href="{{ path('bieres_artisanales') }}">Artisanale</a></li>
+                                <li><a href="{{ path('bieres_blanches') }}">Blanche</a></li>
+                                <li><a href="{{ path('bieres_blondes') }}">Blonde</a></li>
+                                <li><a href="{{ path('bieres_brunes') }}">Brune</a></li>
+                                <li><a href="{{ path('bieres_cervoises') }}">Cervoise</a></li>
+                                <li><a href="{{ path('bieres_kriek') }}">Kriek</a></li>
 
 
                             </ul>
                         </li>
-                    
-                       <li class="dropdown">
+
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-user"></span> Non connecté <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -49,6 +53,7 @@
                         </li>
                     </ul>
                     </ul>
+
 
 
                 </div>
