@@ -66,6 +66,8 @@ class Biere
      * @var varchar2(20)
 
      */
+    
+    private $degre;
 
     private $categorie;
 
@@ -121,6 +123,19 @@ class Biere
     public function setImage($image) {
 
         $this->image = $image;
+
+    }
+    
+  public function getDegre() {
+
+        return $this->degre;
+
+    }
+
+
+    public function setDegre($degre) {
+
+        $this->degre = $degre;
 
     }
     
