@@ -12,14 +12,14 @@ class CategorieBiereDAO extends DAO
      * @return array A list of all categories.
      */
     public function findAll() {
-        $sql = "select * from categorie order by CAT_CodeCategorieBiere asc";
+        $sql = "select * from categorie order by CAT_LibelleCategorieBiere asc";
         $result = $this->db->fetchAll($sql);
         
         // Convert query result to an array of domain objects
         $categories = array();
         foreach ($result as $row) {
-            $categorieCode = $row['CAT_CodeCategorieBiere'];
-            $categories[$categorieCode] = $this->buildDomainObject($row);
+            $codeCat = $row['CAT_CodeCategorieBiere'];
+            $categories[$codeCat] = $this->buildDomainObject($row);
         }
         return $categories;
     }
