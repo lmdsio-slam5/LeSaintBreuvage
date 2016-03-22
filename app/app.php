@@ -45,3 +45,12 @@ $app['dao.biere'] = $app->share(function ($app) {
     $biereDAO->setCategorieDAO($app['dao.categorie']);
     return $biereDAO;
 });
+
+$app['dao.panier'] = $app->share(function ($app) 
+{
+    return new LeSaintBreuvage\DAO\PanierDAO($app['db']);
+});
+$app['dao.achat'] = $app->share(function ($app) 
+{
+    return new LeSaintBreuvage\DAO\AchatDAO($app['db']);
+});

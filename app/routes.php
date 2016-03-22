@@ -82,3 +82,63 @@ $app->get('/login', function(Request $request) use ($app) {
         'last_username' => $app['session']->get('_security.last_username'),
     ));
 })->bind('login');
+
+
+// ajout au panier
+$app->get('/panier/ajouter/{id_visiteur}/{codeArt}', function ($id_visiteur, $codeArt) use ($app) {
+	//
+	$Articles = $app['dao.article']->findAllArticle();
+	//
+	if (!$app['dao.panier']->articleExistant($id_visiteur, $codeArt))
+	{
+		$app['dao.panier']->addProduct($id_visiteur, $codeArt);
+		$app['session']->getFlashBag()->add('panier', '   Cet article a bien été ajouté au panier.');
+	}
+	else
+	{
+		$app['session']->getFlashBag()->add('panier_error', 'Vous avez déja cet article dans votre panier!');
+	}
+    return $app->redirect($app["url_generator"]->generate("article", array('code' => $codeArt)));
+});
+
+// retrait au panier
+$app->get('/panier/enlever/{id_visiteur}/{codeArt}', function ($id_visiteur, $codeArt) use ($app) {
+	//
+	$Articles = $app['dao.article']->findAllArticle();
+	//
+	if ($app['dao.panier']->articleExistant($id_visiteur, $codeArt))
+	{
+		$app['dao.panier']->removeProduct($id_visiteur, $codeArt);
+		$app['session']->getFlashBag()->add('panier', 'L\'article a bien été enlevé du panier.');
+	}
+	else
+	{
+		$app['session']->getFlashBag()->add('panier_error', 'Impossible d\'enlever cet article du panier !');
+    }
+    return $app->redirect($app["url_generator"]->generate("article", array('code' => $codeArt)));
+});
+
+// Le panier
+$app->get('/monpanier/{id}', function ($id) use ($app) {
+	//
+	$categories = $app['dao.article']->findAllArticle();
+	//
+	$articles = $app['dao.panier']->findProductsByUser($id);
+	$prix = $app['dao.panier']->totalPanier($id);
+    return $app['twig']->render('Panier.html.twig', array('categories' => $categories, 'articles' => $articles, 'prix' => $prix));
+});
+
+//vider le panier
+$app->get('/panier/{id}', function ($id) use ($app) {
+	//
+	$categories = $app['dao.article']->findAllArticle();
+	//
+	$prix = $app['dao.panier']->totalPanier($id);
+	$date = date("Y-m-d");
+	$app['dao.achat']->addAchat($id, $prix, $date);
+	$app['dao.panier']->supprimerPanier($id);
+	
+	$articles = $app['dao.panier']->findProductsByUser($id);
+	$prix = $app['dao.panier']->totalPanier($id);
+    return $app['twig']->render('Panier.html.twig', array('categories' => $categories, 'articles' => $articles, 'prix' => $prix));
+});
