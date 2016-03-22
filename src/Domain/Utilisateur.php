@@ -97,7 +97,7 @@ class Utilisateur implements UserInterface
         $this->nom = $nom;
     }
     
-        public function getPrenom() {
+    public function getPrenom() {
         return $this->prenom;
     }
 
@@ -105,7 +105,7 @@ class Utilisateur implements UserInterface
         $this->prenom = $prenom;
     }
     
-        public function getAdresse() {
+    public function getAdresse() {
         return $this->adresse;
     }
 
@@ -113,7 +113,7 @@ class Utilisateur implements UserInterface
         $this->adresse = $adresse;
     }
     
-        public function getCp() {
+    public function getCp() {
         return $this->cp;
     }
 
@@ -121,7 +121,7 @@ class Utilisateur implements UserInterface
         $this->cp = $cp;
     }
     
-        public function getVille() {
+    public function getVille() {
         return $this->ville;
     }
 
@@ -129,7 +129,7 @@ class Utilisateur implements UserInterface
         $this->ville = $ville;
     }
     
-        public function getDateEmbauche() {
+    public function getDateEmbauche() {
         return $this->dateEmbauche;
     }
 
