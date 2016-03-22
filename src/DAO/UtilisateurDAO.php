@@ -78,8 +78,8 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         $utilisateur->setAdresse($row['UT_adresseUtil']);
         $utilisateur->setCp($row['UT_codePostalUtil']);
         $utilisateur->setVille($row['UT_villeUtil']);
-        $utilisateur->setPassword($row['UT_identifiantUtil']);
-        $utilisateur->setUsername($row['UT_motDePasseUtil']);
+        $utilisateur->setUsername($row['UT_identifiantUtil']);
+        $utilisateur->setPassword($row['UT_motDePasseUtil']);
         $utilisateur->setSalt($row['salt']);
         $utilisateur->setRole($row['role']);
         

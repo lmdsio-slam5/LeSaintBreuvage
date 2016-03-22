@@ -1,3 +1,15 @@
+INSERT INTO `achat` (`AC_numAchat`, `UT_numUtil`, `achat_date`, `achat_total`) VALUES
+(1, 1, '2015-04-12', 17.4),
+(2, 1, '2015-04-21', 22.3),
+(3, 2, '2015-05-11', 10.5),
+(4, 4, '2016-01-01', 25.09),
+(5, 2, '2016-01-16', 159),
+(6, 2, '2016-01-16', 159),
+(7, 2, '2016-01-16', 465),
+(8, 2, '2016-01-16', 465),
+(9, 2, '2016-01-16', 465),
+(10, 2, '2016-01-16', 465),
+(11, 2, '2016-01-16', 664);
 INSERT INTO `biere` (`BIE_CodeBiere`, `BIE_DesignationBiere`, `BIE_DescriptionBiere`, `BIE_LienImageBiere`, `CAT_CodeCategorieBiere`, `BIE_Degre`) VALUES
 ('ACD', 'AC/DC bière', 'Une canette de 50 cl pour tous les amateurs de hard rock ! ', 'ACDC', 'BLD', '5.0'),
 ('AF1', 'Affligem Blonde', 'L''excellence de la bière belge d''abbaye avec cette triple Blonde en bouteille de 33 centilitres ! ', 'AffligemBlonde', 'BLD', '7.0'),
@@ -24,8 +36,6 @@ INSERT INTO `biere` (`BIE_CodeBiere`, `BIE_DesignationBiere`, `BIE_DescriptionBi
 ('RCR', 'Rince Cochon Rouge', 'La Rince cochon est une bière fruitée et désaltérante titrant 7.5?%. Au nez, on ressent tout de suite les arômes fruités. En bouche, on retrouve des saveurs douces et fruitées, des notes de framboise, de cerise, et de fraise. On peut également ressentir le houblon, l''orge, et le malt.?', 'RinceCochonRouge', 'ARO', '7.0'),
 ('SA1', 'Samichalus Ambrée', 'Bière autrichienne appartenant aux bières les plus fortes du monde ! Fait office de digestif ! ', 'SamiAmbre', 'AMB', '14.0'),
 ('YBB', 'Yellow Belly Stout', 'Une Imperial stout étonnante brassée par la brasserie Buxton en collaboration avec Omnipollo. ', 'YellowBellyStout', 'NOI', '11.0');
-
-
 INSERT INTO `categorie` (`CAT_CodeCategorieBiere`, `CAT_LibelleCategorieBiere`) VALUES
 ('AMB', 'Ambrée'),
 ('ARO', 'Aromatisée'),
@@ -71,6 +81,7 @@ INSERT INTO `prix` (`QUA_CodeQuantite`, `BIE_CodeBiere`, `PRX_Prix`) VALUES
 ('B33', 'SA1', '5.00'),
 ('B33', 'YBB', '9.80');
 
+
 INSERT INTO `quantite` (`QUA_CodeQuantite`, `QUA_LibelleQuantite`) VALUES
 ('B1L', 'Bouteille de 1 Litre'),
 ('B25', 'Bouteille de 25cl'),
@@ -83,4 +94,5 @@ INSERT INTO `quantite` (`QUA_CodeQuantite`, `QUA_LibelleQuantite`) VALUES
 ('F30', 'Fut de 30 Litres'),
 ('FUC', 'Fut de 50 Litres');
 
-insert into utilisateur values (1, 'saintBreuvage', 'David', '1 r Aimon de Chissée', '38100', 'GRENOBLE', 'saintBreuvage', 'biere','mnPEaJNz6,rUPbAYGg6$UXt', '','V');
+INSERT INTO `utilisateur` (`UT_numUtil`, `UT_nomUtil`, `UT_prenomUtil`, `UT_adresseUtil`, `UT_codePostalUtil`, `UT_villeUtil`, `UT_identifiantUtil`, `UT_motDePasseUtil`, `salt`, `role`) VALUES
+(1, '', '', '', '', '', 'saintbreuvage', 'IEUYtEyGg0lUBJHNZ/i1ugeKK5hVxM2WOXK1rmyyq2Nuu2Q1+UtoVCI2Rz9rvvOx6L819LJQnRFcfo0P4on7RA==', '%qugq3NAYfC1MKwrW?yevbE', 'ROLE_ADMIN');

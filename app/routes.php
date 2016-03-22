@@ -142,3 +142,34 @@ $app->get('/panier/{id}', function ($id) use ($app) {
 	$prix = $app['dao.panier']->totalPanier($id);
     return $app['twig']->render('Panier.html.twig', array('categories' => $categories, 'articles' => $articles, 'prix' => $prix));
 });
+// Login form
+$app->get('/login', function(Request $request) use ($app) {
+    return $app['twig']->render('login.html.twig', array(
+        'error'         => $app['security.last_error']($request),
+        'last_username' => $app['session']->get('_security.last_username'),
+    ));
+})->bind('login');
+// Profil utilisateur
+$app->match('/profil', function(Request $request) use ($app) {
+    $visiteur = $app['user'];
+    $visiteurFormView = null;
+    $visiteurForm = $app['form.factory']->create(new VisiteurType(), $visiteur);
+    $visiteurForm->handleRequest($request);
+    if ($visiteurForm->isSubmitted() && $visiteurForm->isValid()) {
+        $plainPassword = $visiteur->getPassword();
+        // find the encoder for a UserInterface instance
+        $encoder = $app['security.encoder_factory']->getEncoder($visiteur);
+        // compute the encoded password
+        $password = $encoder->encodePassword($plainPassword, $visiteur->getSalt());
+        $visiteur->setPassword($password); 
+        $app['dao.visiteur']->save($visiteur);
+        $app['session']->getFlashBag()->add('success', 'Vos informations personnelles ont été mises à jour.');
+    }
+});
+//Mot de passe
+$app->get('/hashpwd', function() use ($app){
+    $rawPassword='admin';
+    $salt='%qugq3NAYfC1MKwrW?yevbE';
+    $encoder = $app['security.encoder.digest'];
+    return $encoder->encodePassword($rawPassword, $salt);
+});
