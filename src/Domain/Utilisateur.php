@@ -128,14 +128,7 @@ class Utilisateur implements UserInterface
     public function setVille($ville) {
         $this->ville = $ville;
     }
-    
-    public function getDateEmbauche() {
-        return $this->dateEmbauche;
-    }
 
-    public function setDateEmbauche($dateEmbauche) {
-        $this->dateEmbauche = $dateEmbauche;
-    }
     
         /**
      * @inheritDoc
