@@ -1,0 +1,27 @@
+{% extends "layout.html.twig" %} {% block title %}Panier{% endblock %} {% block content %}
+<h2 class="text-center">Mon panier</h2> {% if bieres is empty %}
+<div class="alert alert-info">
+    <strong>Info!</strong> Panier vide !
+</div>
+{% else %}
+<div class="row">
+    {% for biere in bieres %}
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="thumbnail">
+            <div class="caption">
+                <h3 class="text-center">{{ biere.libelle }} <small>{{ "%.2f €"|format(biere.codeBiere) }}</small></h3></div>
+            <a href="/biere/{{ biere.codeBiere }}">
+                <img class="img-responsive" style="border-radius: 50px; border:4px solid white; width:100px; height:100px; box-shadow: 1px 1px 10px #555;" src="{{ app.request.basepath }}/img/{{ biere.image}}.jpg" alt=" " />
+            </a>
+            <a type="submit" href="/panier/enlever/{{ app.security.token.user.id }}/{{ biere.codeBiere }}" class="btn btn-danger">
+							Enlever du panier
+				    </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<a type="submit" href="/panier/{{ app.security.token.user.id }}" class="btn btn-primary">
+			Acheter
+		</a>
+
+<h3 class="text-left">Total : </h3> {% endif %} {% endblock %}

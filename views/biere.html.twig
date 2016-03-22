@@ -1,0 +1,11 @@
+{% extends "layout.html.twig" %} {% block title %}{{ biere.libelle }}{% endblock %} {% block content %}
+<p>
+    <img class="img-responsive" style="border-radius: 50px; border:4px solid white; width:500px; height:500px; box-shadow: 1px 1px 10px #555;" src="{{ app.request.basepath }}/img/{{ biere.image }}.png" />
+    <div container>
+        <h2>{{ biere.libelle }}</h2>
+        <p>{{ biere.description }}</p>
+        <p>Degrés : {{ biere.degre }}</p>
+    </div>
+
+</p>
+{% endblock %}
