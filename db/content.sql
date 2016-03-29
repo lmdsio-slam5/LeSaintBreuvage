@@ -57,5 +57,5 @@ INSERT INTO `categorie` (`CAT_CodeCategorieBiere`, `CAT_LibelleCategorieBiere`) 
 --
 
 INSERT INTO `utilisateur` (`UT_numUtil`, `UT_nomUtil`, `UT_prenomUtil`, `UT_adresseUtil`, `UT_codePostalUtil`, `UT_villeUtil`, `UT_identifiantUtil`, `UT_motDePasseUtil`, `salt`, `role`) VALUES
-(2, '', '', '', '', '', 'saintbreuvage', 'IEUYtEyGg0lUBJHNZ/i1ugeKK5hVxM2WOXK1rmyyq2Nuu2Q1+UtoVCI2Rz9r', '%qugq3NAYfC1MKwrW?yevbE', 'ROLE_ADMIN');
+(2, '', '', '', '', '', 'saintbreuvage', 'IEUYtEyGg0lUBJHNZ/i1ugeKK5hVxM2WOXK1rmyyq2Nuu2Q1+UtoVCI2Rz9rvvOx6L819LJQnRFcfo0P4on7RA==', '%qugq3NAYfC1MKwrW?yevbE', 'ROLE_ADMIN');
 
