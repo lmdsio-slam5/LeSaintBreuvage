@@ -67,3 +67,4 @@ ALTER TABLE `biere`
 ALTER TABLE `panier`
   ADD CONSTRAINT `fk_panier_biere` FOREIGN KEY (`BIE_codeBiere`) REFERENCES `biere` (`BIE_CodeBiere`),
   ADD CONSTRAINT `fk_panier_utilisateur` FOREIGN KEY (`UT_numUtil`) REFERENCES `utilisateur` (`UT_numUtil`);
+  ALTER TABLE `utilisateur` CHANGE `UT_motDePasseUtil` `UT_motDePasseUtil` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
