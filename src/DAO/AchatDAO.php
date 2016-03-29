@@ -9,7 +9,8 @@ class AchatDAO extends DAO
   
     protected function buildDomainObject($row) 
     {
-        $achat = new achat();
+        $achat = new Achat();
+        $achat->setNumAchat($row['AC_numAchat']);
         $achat->setIdVisiteur($row['UT_numUtil']);
         $achat->setAchatDate($row['AC_dateAchat']);
         $achat->setAchatTotal($row['AC_totalAchat']);

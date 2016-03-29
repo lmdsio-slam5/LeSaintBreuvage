@@ -4,6 +4,8 @@ namespace LeSaintBreuvage\Domain;
 
 class Achat
 {
+    
+    private numAchat;
 	/**
      * User id.
      *
@@ -26,6 +28,15 @@ class Achat
     private $totalAchat;
 
 
+      public function getNumAchat()
+	{
+        return $this->numAchat;
+    }
+
+    public function setNumAchat($numAchat)
+	{
+        $this->numAchat = $numAchat;
+    }
 
     public function getIdUtilisateur()
 	{

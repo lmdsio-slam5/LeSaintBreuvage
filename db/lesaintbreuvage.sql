@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `achat` (
   `AC_numAchat` int(4) NOT NULL,
   `UT_numUtil` int(5) NOT NULL,
-  `achat_date` date NOT NULL,
-  `achat_total` float NOT NULL
+  `AC-dateAchat` date NOT NULL,
+  `AC_totalAchat` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

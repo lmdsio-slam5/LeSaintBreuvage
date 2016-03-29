@@ -75,15 +75,6 @@ $app->get('/biere/{code}', function($code) use ($app) {
 })->bind('biere');
 
 
-// Login form
-$app->get('/login', function(Request $request) use ($app) {
-    return $app['twig']->render('login.html.twig', array(
-        'error'         => $app['security.last_error']($request),
-        'last_username' => $app['session']->get('_security.last_username'),
-    ));
-})->bind('login');
-
-
 // ajout au panier
 $app->get('/panier/ajouter/{id_visiteur}/{codeArt}', function ($id_visiteur, $codeArt) use ($app) {
 	//
@@ -121,12 +112,12 @@ $app->get('/panier/enlever/{id_visiteur}/{codeArt}', function ($id_visiteur, $co
 // Le panier
 $app->get('/monpanier/{id}', function ($id) use ($app) {
 	//
-	$categories = $app['dao.article']->findAllArticle();
+	$categories = $app['dao.biere']->findAllArticle();
 	//
 	$articles = $app['dao.panier']->findProductsByUser($id);
 	$prix = $app['dao.panier']->totalPanier($id);
-    return $app['twig']->render('Panier.html.twig', array('categories' => $categories, 'articles' => $articles, 'prix' => $prix));
-});
+    return $app['twig']->render('Panier.html.twig', array('categories' => $categories, 'bieres' => $bieres, 'prix' => $prix));
+})->bind('panier');
 
 //vider le panier
 $app->get('/panier/{id}', function ($id) use ($app) {
@@ -142,6 +133,8 @@ $app->get('/panier/{id}', function ($id) use ($app) {
 	$prix = $app['dao.panier']->totalPanier($id);
     return $app['twig']->render('Panier.html.twig', array('categories' => $categories, 'articles' => $articles, 'prix' => $prix));
 });
+
+
 // Login form
 $app->get('/login', function(Request $request) use ($app) {
     return $app['twig']->render('login.html.twig', array(
