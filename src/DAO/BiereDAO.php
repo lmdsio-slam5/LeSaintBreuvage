@@ -168,6 +168,7 @@ class BiereDAO extends DAO
         $biere->setDescription($row['BIE_DescriptionBiere']);
         $biere->setImage($row['BIE_LienImageBiere']);
         $biere->setDegre($row['BIE_DegreBiere']);
+        $biere->setPrix($row['BIE_PrixBiere']);
         
             if (array_key_exists('CAT_CodeCategorieBiere', $row)) {
             // Trouve et définit la catégorie associée

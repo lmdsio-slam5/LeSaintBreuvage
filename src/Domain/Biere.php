@@ -69,6 +69,10 @@ class Biere
     
     private $degre;
 
+
+    
+    private $prix;
+        
     private $categorie;
 
 
@@ -136,6 +140,19 @@ class Biere
     public function setDegre($degre) {
 
         $this->degre = $degre;
+
+    }
+    
+      public function getPrix() {
+
+        return $this->prix;
+
+    }
+
+
+    public function setPrix($prix) {
+
+        $this->prix = $prix;
 
     }
     
