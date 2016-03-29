@@ -1,3 +1,8 @@
+--
+-- Dumping data for table `biere`
+--
+
+
 INSERT INTO `biere` (`BIE_CodeBiere`, `BIE_DesignationBiere`, `BIE_DescriptionBiere`, `BIE_LienImageBiere`, `BIE_DegreBiere`, `BIE_PrixBiere`, `CAT_CodeCategorieBiere`) VALUES
 ('ACD', 'AC/DC bière', 'Une canette de 50 cl pour tous les amateurs de hard rock ! ', 'ACDC', '5.0', '1.60', 'BLD'),
 ('AF1', 'Affligem Blonde', 'L''excellence de la bière belge d''abbaye avec cette triple Blonde en bouteille de 33 centilitres ! ', 'AffligemBlonde', '7.0', '2.60', 'BLD'),
@@ -24,3 +29,33 @@ INSERT INTO `biere` (`BIE_CodeBiere`, `BIE_DesignationBiere`, `BIE_DescriptionBi
 ('RCR', 'Rince Cochon Rouge', 'La Rince cochon est une bière fruitée et désaltérante titrant 7.5?%. Au nez, on ressent tout de suite les arômes fruités. En bouche, on retrouve des saveurs douces et fruitées, des notes de framboise, de cerise, et de fraise. On peut également ressentir le houblon, l''orge, et le malt.?', 'RinceCochonRouge', '7.0', '4.80', 'ARO'),
 ('SA1', 'Samichalus Ambrée', 'Bière autrichienne appartenant aux bières les plus fortes du monde ! Fait office de digestif ! ', 'SamiAmbre', '14.0', '6.50', 'AMB'),
 ('YBB', 'Yellow Belly Stout', 'Une Imperial stout étonnante brassée par la brasserie Buxton en collaboration avec Omnipollo. ', 'YellowBellyStout', '11.0', '4.95', 'NOI');
+
+
+--
+-- Dumping data for table `categorie`
+--
+
+INSERT INTO `categorie` (`CAT_CodeCategorieBiere`, `CAT_LibelleCategorieBiere`) VALUES
+('AMB', 'Ambrée'),
+('ARO', 'Aromatisée'),
+('ART', 'Artisanale'),
+('BLC', 'Blanche'),
+('BLD', 'Blonde'),
+('BRT', 'Brut'),
+('BRU', 'Brune'),
+('CER', 'Cervoise'),
+('FAR', 'Faro'),
+('KRI', 'Kriek'),
+('NOI', 'Noire'),
+('RGE', 'Rouge'),
+('ROU', 'Rousse'),
+('SAL', 'Sans Alcool');
+
+
+--
+-- Dumping data for table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`UT_numUtil`, `UT_nomUtil`, `UT_prenomUtil`, `UT_adresseUtil`, `UT_codePostalUtil`, `UT_villeUtil`, `UT_identifiantUtil`, `UT_motDePasseUtil`, `salt`, `role`) VALUES
+(2, '', '', '', '', '', 'saintbreuvage', 'IEUYtEyGg0lUBJHNZ/i1ugeKK5hVxM2WOXK1rmyyq2Nuu2Q1+UtoVCI2Rz9r', '%qugq3NAYfC1MKwrW?yevbE', 'ROLE_ADMIN');
+

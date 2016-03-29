@@ -125,29 +125,6 @@ CREATE TABLE IF NOT EXISTS `panier` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prix`
---
-
-CREATE TABLE IF NOT EXISTS `prix` (
-  `QUA_CodeQuantite` varchar(3) NOT NULL,
-  `QUA_LibelleQuantite` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `quantite`
---
-
-CREATE TABLE IF NOT EXISTS `quantite` (
-  `QUA_CodeQuantite` varchar(3) NOT NULL,
-  `BIE_CodeBiere` varchar(3) NOT NULL,
-  `PRX_Prix` varchar(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `utilisateur`
 --
 
