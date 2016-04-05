@@ -1,3 +1,4 @@
+
 {% extends "layout.html.twig" %} {% set biereMenu = true %} {% block title %}Bières{% endblock %} {% block content %}
 <h2 class="text-center">{{ block('title') }}</h2> {% if bieres_blondes %} {% for biere in bieres_blondes %}
 <div id="content">
@@ -37,6 +38,8 @@
     </div>
 </div>
 
+{% endfor %}
 {% else %}
 <div class="alert alert-warning">Aucune bière trouvé.</div>
-{% endfor %} {% endif %} {% endblock %}
+
+{% endif %} {% endblock %}
